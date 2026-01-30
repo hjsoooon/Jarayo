@@ -242,7 +242,15 @@ export const KEYWORD_RESPONSES = {
   // 수면 관련
   SLEEP: {
     keywords: ['잠', '수면', '통잠', '낮잠', '밤잠', '잠투정', '재우', '깨', '자다', '눕히', '수면교육', '백색소음', '화이트노이즈', '자장가'],
+    greetingKeywords: ['안녕', '하이', '헬로', 'hi', 'hello', '반가', '처음', '시작', '뭐해', '계세요', '누구'],
     coachId: 'SLEEP_EXPERT' as const,
+    greetingResponse: {
+      text: "안녕하세요! 😴 저는 수면 전문 코치예요. 아이의 꿀잠을 책임지는 전문가랍니다! 통잠, 낮잠, 수면 교육, 잠투정 등 수면과 관련된 모든 고민을 도와드릴게요. 어떤 수면 고민이 있으신가요?",
+      tips: [
+        { icon: '💤', title: '수면 코치 전문 분야', description: '통잠 재우기, 수면 교육, 낮잠 조절, 잠투정 해결 등', type: 'INFO' as const, category: 'SLEEP' as const },
+        { icon: '🌙', title: '이런 걸 물어보세요', description: '"통잠 자는 법", "낮잠 횟수", "수면 의식 만들기" 등', type: 'SUCCESS' as const, category: 'SLEEP' as const }
+      ]
+    },
     responses: [
       {
         text: "안녕하세요, 수면 전문가입니다 😴 아이의 수면은 성장에 정말 중요한 부분이에요. 일정한 수면 루틴을 만들어주시는 것이 가장 중요합니다. 매일 같은 시간에 목욕 → 수유 → 자장가 순서로 진행해보세요. 아이가 '이제 잘 시간이구나'를 자연스럽게 인식하게 됩니다.",
@@ -271,7 +279,15 @@ export const KEYWORD_RESPONSES = {
   // 이유식/영양 관련
   NUTRITION: {
     keywords: ['이유식', '밥', '먹', '수유', '분유', '모유', '젖', '영양', '식단', '레시피', '알레르기', '거부', '편식', '간식', '과일', '야채', '단백질', '철분'],
+    greetingKeywords: ['안녕', '하이', '헬로', 'hi', 'hello', '반가', '처음', '시작', '뭐해', '계세요', '누구'],
     coachId: 'NUTRITION' as const,
+    greetingResponse: {
+      text: "안녕하세요! 🥣 저는 영양/이유식 전문 코치예요. 아이의 건강한 식습관과 영양 균형을 책임지는 전문가랍니다! 이유식 시작, 수유량, 알레르기, 편식 등 먹는 것과 관련된 모든 고민을 도와드릴게요. 어떤 영양 고민이 있으신가요?",
+      tips: [
+        { icon: '🥗', title: '영양 코치 전문 분야', description: '이유식 단계별 가이드, 영양 균형, 알레르기 대처, 편식 해결 등', type: 'INFO' as const, category: 'NUTRITION' as const },
+        { icon: '🍼', title: '이런 걸 물어보세요', description: '"이유식 시작 시기", "철분 보충법", "수유량 조절" 등', type: 'SUCCESS' as const, category: 'NUTRITION' as const }
+      ]
+    },
     responses: [
       {
         text: "안녕하세요, 영양 전문가입니다 🥣 이유식 시작은 생후 6개월 전후가 적당해요. 처음에는 쌀미음부터 시작해서, 한 가지 재료씩 3일 간격으로 새로운 식재료를 추가해보세요. 알레르기 반응을 확인하기 좋은 방법이에요!",
@@ -300,7 +316,15 @@ export const KEYWORD_RESPONSES = {
   // 심리/정서 관련
   PSYCHOLOGY: {
     keywords: ['울', '떼', '짜증', '화', '불안', '분리불안', '애착', '훈육', '감정', '마음', '스트레스', '칭찬', '혼', '버릇', '고집', '떼쓰'],
+    greetingKeywords: ['안녕', '하이', '헬로', 'hi', 'hello', '반가', '처음', '시작', '뭐해', '계세요', '누구'],
     coachId: 'PSYCHOLOGY' as const,
+    greetingResponse: {
+      text: "안녕하세요! 🧠 저는 아동 심리 전문 코치예요. 아이의 마음을 읽고 정서 발달을 돕는 전문가랍니다! 떼쓰기, 분리불안, 애착 형성, 훈육 방법 등 마음과 관련된 모든 고민을 도와드릴게요. 어떤 심리 고민이 있으신가요?",
+      tips: [
+        { icon: '💜', title: '심리 코치 전문 분야', description: '감정 코칭, 떼쓰기 대응, 분리불안, 애착 형성, 훈육법 등', type: 'INFO' as const, category: 'PSYCHOLOGY' as const },
+        { icon: '🤗', title: '이런 걸 물어보세요', description: '"떼쓸 때 어떻게 해요", "애착 형성 방법", "훈육은 어떻게" 등', type: 'SUCCESS' as const, category: 'PSYCHOLOGY' as const }
+      ]
+    },
     responses: [
       {
         text: "안녕하세요, 아동 심리 전문가입니다 🧠 아이가 떼를 쓸 때 정말 힘드시죠. 하지만 이건 아이가 감정을 표현하는 자연스러운 과정이에요. 먼저 아이의 감정을 인정해주세요. \"화가 났구나, 속상했구나\"라고 말해주는 것만으로도 아이는 이해받는다고 느껴요.",
@@ -329,7 +353,15 @@ export const KEYWORD_RESPONSES = {
   // 발달 관련
   DEVELOPMENT: {
     keywords: ['발달', '성장', '뒤집', '기어', '앉', '서', '걷', '말', '옹알이', '대근육', '소근육', '인지', '월령', '또래', '느린', '빠른', '터미타임'],
+    greetingKeywords: ['안녕', '하이', '헬로', 'hi', 'hello', '반가', '처음', '시작', '뭐해', '계세요', '누구'],
     coachId: 'DEVELOPMENT_COACH' as const,
+    greetingResponse: {
+      text: "안녕하세요! 🌱 저는 아동 발달 전문 코치예요. 아이의 건강한 성장과 발달을 돕는 전문가랍니다! 뒤집기, 기어가기, 걷기 같은 대근육 발달부터 소근육, 인지 발달까지 모든 성장 고민을 도와드릴게요. 어떤 발달 고민이 있으신가요?",
+      tips: [
+        { icon: '🌿', title: '발달 코치 전문 분야', description: '월령별 발달 체크, 대근육/소근육 발달, 터미타임, 놀이법 등', type: 'INFO' as const, category: 'DEVELOPMENT' as const },
+        { icon: '🎯', title: '이런 걸 물어보세요', description: '"뒤집기 시기", "터미타임 방법", "언어 발달 체크" 등', type: 'SUCCESS' as const, category: 'DEVELOPMENT' as const }
+      ]
+    },
     responses: [
       {
         text: "안녕하세요, 발달 전문가입니다 🌱 아이의 성장 발달이 궁금하시군요! 모든 아이는 자기만의 속도가 있어요. 일반적인 발달 이정표는 참고용일 뿐, 1-2개월 차이는 정상 범위입니다. 다만, 꾸준한 자극과 놀이는 발달에 큰 도움이 됩니다!",
@@ -358,7 +390,15 @@ export const KEYWORD_RESPONSES = {
   // 배변 관련
   POOP: {
     keywords: ['똥', '응가', '변', '기저귀', '배변', '변비', '설사', '대변', '소변', '쉬', '화장실', '변기', '훈련'],
+    greetingKeywords: ['안녕', '하이', '헬로', 'hi', 'hello', '반가', '처음', '시작', '뭐해', '계세요', '누구'],
     coachId: 'POOP_GUIDE' as const,
+    greetingResponse: {
+      text: "안녕하세요! 🚽 저는 배변 훈련 전문 코치예요. 스트레스 없는 기저귀 졸업을 돕는 전문가랍니다! 배변 훈련 시작 시기, 변비 해결, 변기 거부 등 배변과 관련된 모든 고민을 도와드릴게요. 어떤 배변 고민이 있으신가요?",
+      tips: [
+        { icon: '🎉', title: '배변 코치 전문 분야', description: '배변 훈련, 기저귀 졸업, 변비/설사 대처, 변기 친해지기 등', type: 'INFO' as const, category: 'POOP' as const },
+        { icon: '💩', title: '이런 걸 물어보세요', description: '"기저귀 떼는 시기", "변기 거부할 때", "변비 해결법" 등', type: 'SUCCESS' as const, category: 'POOP' as const }
+      ]
+    },
     responses: [
       {
         text: "안녕하세요, 배변 훈련 전문가입니다 🚽 기저귀 졸업이 고민이시군요! 배변 훈련은 보통 18-24개월 사이에 시작하지만, 아이가 준비됐다는 신호를 보여야 해요. 기저귀가 젖은 걸 불편해하거나, 규칙적인 배변 패턴이 생기면 시작해볼 수 있어요!",

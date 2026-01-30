@@ -23,7 +23,22 @@ export const getGeminiResponse = async (
     };
     
     const category = categoryMap[forcedCoachId] || 'GENERAL';
-    const categoryData = KEYWORD_RESPONSES[category];
+    const categoryData = KEYWORD_RESPONSES[category] as any;
+    
+    // 인사말 키워드 체크
+    const greetingKeywords = categoryData.greetingKeywords || [];
+    const isGreeting = greetingKeywords.some((keyword: string) => input.includes(keyword));
+    
+    // 인사말이고 해당 코치에 인사 응답이 있으면 인사 응답 반환
+    if (isGreeting && categoryData.greetingResponse) {
+      return {
+        text: categoryData.greetingResponse.text,
+        tips: categoryData.greetingResponse.tips,
+        selectedCoachId: categoryData.coachId
+      };
+    }
+    
+    // 일반 응답
     const randomResponse = categoryData.responses[Math.floor(Math.random() * categoryData.responses.length)];
     
     return {
