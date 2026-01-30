@@ -196,47 +196,48 @@ export default function App() {
       <div className="flex-1 overflow-hidden flex flex-col">
         {activeTab === 'CHATS' ? (
           <div className="flex-1 flex flex-col h-full overflow-hidden chat-container">
-            <header className="p-6 pt-10 bg-white/90 backdrop-blur-xl border-b border-gray-100 sticky top-0 z-40 shrink-0">
-              <div className="flex items-center justify-between">
-                <div className="flex flex-col">
-                  <h1 className="header-title text-[26px]">Team JARAYO</h1>
-                  <div className="flex items-center gap-2 mt-1.5">
-                    <div className="flex -space-x-2.5">
-                      {COACHES.map(c => (
-                        <div key={c.id} className="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-[11px] shadow-sm overflow-hidden" style={{ background: c.bgColor }}>{c.avatar}</div>
-                      ))}
-                    </div>
-                    <span className="text-[10px] font-bold text-gray-400 mono ml-2 bg-gray-50 px-2 py-0.5 rounded-full border border-gray-100">AI 전문가 그룹</span>
+            <header className="px-4 pt-[env(safe-area-inset-top,12px)] pb-3 bg-white/95 backdrop-blur-xl border-b border-gray-100 sticky top-0 z-40 shrink-0">
+              <div className="flex items-center justify-between pt-2">
+                <div className="flex items-center gap-3">
+                  <div className="flex -space-x-2">
+                    {COACHES.slice(0, 3).map(c => (
+                      <div key={c.id} className="w-6 h-6 rounded-full border-2 border-white flex items-center justify-center text-[10px] shadow-sm" style={{ background: c.bgColor }}>{c.avatar}</div>
+                    ))}
+                  </div>
+                  <div>
+                    <h1 className="header-title text-[18px] leading-tight">JARAYO</h1>
+                    <span className="text-[10px] text-gray-400">AI 육아 코치</span>
                   </div>
                 </div>
-                <div className="bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100/50 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
-                  <span className="text-[10px] font-bold text-blue-600 mono">LIVE</span>
+                <div className="bg-green-50 px-2 py-1 rounded-full flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                  <span className="text-[9px] font-bold text-green-600">온라인</span>
                 </div>
               </div>
             </header>
 
-            <div className="flex-1 overflow-y-auto hide-scrollbar p-6 space-y-8 flex flex-col">
+            <div className="flex-1 overflow-y-auto hide-scrollbar px-4 py-4 space-y-4 flex flex-col">
               {messages.length === 0 && (
-                <div className="flex flex-col items-center py-12 bubble-pop">
-                  <div className="relative mb-6">
-                    <div className="w-24 h-24 bg-white rounded-[40px] shadow-xl flex items-center justify-center text-5xl border border-gray-50">👶</div>
+                <div className="flex flex-col items-center py-8 bubble-pop">
+                  <div className="relative mb-4">
+                    <div className="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl border border-gray-50">👶</div>
                   </div>
-                  <h2 className="text-[20px] font-black text-[#333] mb-2 text-center tracking-tight">당신의 육아 파트너입니다</h2>
-                  <p className="text-[14px] font-medium text-[#888] text-center px-10 leading-relaxed mb-10">아이의 성장과 부모의 행복을 위해<br/>최적의 솔루션을 제공합니다.</p>
+                  <h2 className="text-[17px] font-black text-[#333] mb-1 text-center">육아 고민, 물어보세요!</h2>
+                  <p className="text-[13px] text-[#888] text-center mb-6">수면, 이유식, 발달, 심리 전문가가 답변해요</p>
                   
-                  <div className="w-full grid grid-cols-1 gap-4 max-w-sm px-4">
+                  <div className="w-full space-y-2">
                     {COACHES.slice(0, 3).map((coach, i) => (
                       <button 
                         key={i} 
                         onClick={() => handleSendMessage(coach.quickQuestions?.[0])} 
-                        className="w-full p-4 rounded-3xl border border-gray-100 bg-white shadow-sm flex items-center gap-4 text-left transition-all active:scale-95"
+                        className="w-full p-3 rounded-2xl border border-gray-100 bg-white flex items-center gap-3 text-left active:scale-[0.98] active:bg-gray-50 transition-all"
                       >
-                        <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl shrink-0" style={{ background: coach.bgColor }}>{coach.avatar}</div>
-                        <div className="flex flex-col flex-1 overflow-hidden">
-                          <span className="text-[11px] font-black text-gray-400 uppercase tracking-widest">{coach.name}</span>
-                          <span className="text-[15px] font-bold text-[#444] truncate">{coach.quickQuestions?.[0]}</span>
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl shrink-0" style={{ background: coach.bgColor }}>{coach.avatar}</div>
+                        <div className="flex-1 min-w-0">
+                          <span className="text-[10px] font-bold text-gray-400 uppercase">{coach.name}</span>
+                          <p className="text-[13px] font-medium text-[#333] truncate">{coach.quickQuestions?.[0]}</p>
                         </div>
+                        <svg className="w-4 h-4 text-gray-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/></svg>
                       </button>
                     ))}
                   </div>
@@ -248,12 +249,12 @@ export default function App() {
                 return (
                   <div key={msg.id} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'} bubble-pop`}>
                     {msg.role === 'assistant' && coach && (
-                      <div className="flex items-center gap-2 mb-2 ml-1">
-                        <div className="w-6 h-6 rounded-lg flex items-center justify-center text-[11px] text-white shadow-sm" style={{ background: coach.bgColor }}>{coach.avatar}</div>
-                        <span className="text-[11px] font-black text-gray-500 tracking-tighter uppercase">{coach.name} 코치</span>
+                      <div className="flex items-center gap-1.5 mb-1.5 ml-1">
+                        <div className="w-5 h-5 rounded-md flex items-center justify-center text-[10px]" style={{ background: coach.bgColor }}>{coach.avatar}</div>
+                        <span className="text-[10px] font-bold text-gray-500">{coach.name} 코치</span>
                       </div>
                     )}
-                    <div className={`px-5 py-4 rounded-[28px] max-w-[92%] text-[15px] leading-relaxed shadow-sm ${msg.role === 'user' ? 'bg-[#7EA1FF] text-white rounded-tr-none' : 'bg-white text-[#3D3D3D] border border-gray-50 rounded-tl-none'}`}>
+                    <div className={`px-3.5 py-2.5 rounded-2xl max-w-[85%] text-[14px] leading-relaxed ${msg.role === 'user' ? 'bg-[#7EA1FF] text-white rounded-tr-sm' : 'bg-white text-[#3D3D3D] border border-gray-100 rounded-tl-sm'}`}>
                       {msg.content}
                     </div>
                     {msg.tips && (
@@ -355,41 +356,47 @@ export default function App() {
               <div ref={messagesEndRef} className="h-10 shrink-0" />
             </div>
 
-            {/* Coach Expert Tabs - Reconfigured */}
-            <div className="bg-white border-t border-gray-50 shrink-0 pb-8 shadow-[0_-15px_40px_rgba(0,0,0,0.04)] z-50">
-              <div className="overflow-x-auto hide-scrollbar shrink-0 py-4">
-                <div className="flex gap-2.5 px-6 min-w-max">
+            {/* 하단 입력 영역 */}
+            <div className="bg-white border-t border-gray-100 shrink-0 z-50">
+              {/* 코치 선택 탭 */}
+              <div className="overflow-x-auto hide-scrollbar py-2 border-b border-gray-50">
+                <div className="flex gap-1.5 px-3 min-w-max">
                   <button 
                     onClick={() => setForcedCoachId(null)} 
-                    className={`px-5 py-2.5 rounded-2xl text-[12px] font-black border transition-all ${!forcedCoachId ? 'bg-[#7EA1FF] text-white border-transparent shadow-lg shadow-[#7EA1FF]/30' : 'bg-gray-50 text-gray-400 border-gray-100 hover:bg-gray-100'}`}
+                    className={`px-3 py-1.5 rounded-full text-[11px] font-bold transition-all ${!forcedCoachId ? 'bg-[#7EA1FF] text-white' : 'bg-gray-100 text-gray-500'}`}
                   >
-                    ALL
+                    전체
                   </button>
                   {COACHES.map(c => (
                     <button 
                       key={c.id} 
                       onClick={() => setForcedCoachId(c.id)} 
-                      className={`px-5 py-2.5 rounded-2xl text-[12px] font-black border flex items-center gap-2 transition-all ${forcedCoachId === c.id ? 'text-white border-transparent shadow-lg' : 'bg-gray-50 text-gray-400 border-gray-100 hover:bg-gray-100'}`} 
+                      className={`px-3 py-1.5 rounded-full text-[11px] font-bold flex items-center gap-1 transition-all ${forcedCoachId === c.id ? 'text-white' : 'bg-gray-100 text-gray-500'}`} 
                       style={{ background: forcedCoachId === c.id ? c.bgColor : undefined }}
                     >
-                      <span className="text-sm">{c.avatar}</span><span>{c.name}</span>
+                      <span className="text-xs">{c.avatar}</span>{c.name}
                     </button>
                   ))}
                 </div>
               </div>
-              <div className="px-6">
-                <div className="bg-gray-50 rounded-[32px] p-2 flex items-center gap-1 border border-gray-100 focus-within:bg-white focus-within:ring-4 focus-within:ring-[#7EA1FF]/5 transition-all">
+              {/* 입력창 */}
+              <div className="px-3 py-2 pb-[env(safe-area-inset-bottom,8px)]">
+                <div className="bg-gray-100 rounded-full flex items-center gap-2 pr-1.5">
                   <input 
                     ref={inputRef} 
                     type="text" 
                     value={inputText} 
                     onChange={(e) => setInputText(e.target.value)} 
                     onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()} 
-                    placeholder={forcedCoachId ? `${COACHES.find(c => c.id === forcedCoachId)?.name} 코치에게 상담하기` : "궁금한 점을 물어보세요"} 
-                    className="flex-1 bg-transparent border-none focus:ring-0 font-bold text-[#333] px-5 py-3.5 text-[15px] outline-none placeholder:text-gray-300" 
+                    placeholder={forcedCoachId ? `${COACHES.find(c => c.id === forcedCoachId)?.name} 코치에게 질문` : "무엇이든 물어보세요"} 
+                    className="flex-1 bg-transparent border-none focus:ring-0 text-[#333] pl-4 py-2.5 text-[14px] outline-none placeholder:text-gray-400" 
                   />
-                  <button onClick={() => handleSendMessage()} disabled={!inputText.trim() || isTyping} className={`p-4 rounded-[24px] transition-all ${inputText.trim() ? 'bg-[#7EA1FF] text-white shadow-xl shadow-[#7EA1FF]/30 active:scale-90' : 'bg-gray-200 text-gray-300'}`}>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 12h14m-7-7l7 7-7 7"/></svg>
+                  <button 
+                    onClick={() => handleSendMessage()} 
+                    disabled={!inputText.trim() || isTyping} 
+                    className={`p-2.5 rounded-full transition-all shrink-0 ${inputText.trim() ? 'bg-[#7EA1FF] text-white active:scale-90' : 'bg-gray-300 text-white'}`}
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 12h14m-7-7l7 7-7 7"/></svg>
                   </button>
                 </div>
               </div>
@@ -397,14 +404,14 @@ export default function App() {
           </div>
         ) : (
           <div className="flex-1 flex flex-col overflow-hidden bg-[#F8F9FD] tab-content-enter">
-            <header className="bg-white px-7 pt-12 pb-8 rounded-b-[48px] shadow-sm z-20">
-              <div className="flex items-center justify-between mb-8">
-                <div className="flex flex-col">
-                   <span className="text-[11px] font-black text-blue-500 uppercase tracking-[0.3em] mb-1 mono">Chat Report</span>
-                   <h1 className="text-[28px] font-black outfit text-[#222] tracking-tighter">상담 리포트</h1>
+            <header className="bg-white px-4 pt-[env(safe-area-inset-top,12px)] pb-4 rounded-b-[32px] shadow-sm z-20">
+              <div className="flex items-center justify-between pt-2 mb-4">
+                <div>
+                   <span className="text-[10px] font-bold text-blue-500 uppercase tracking-wider">Report</span>
+                   <h1 className="text-[20px] font-black text-[#222]">상담 리포트</h1>
                 </div>
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#7EA1FF] to-[#A29BFE] flex items-center justify-center shadow-lg">
-                  <span className="text-2xl">📊</span>
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#7EA1FF] to-[#A29BFE] flex items-center justify-center">
+                  <span className="text-lg">📊</span>
                 </div>
               </div>
               {/* 채팅 요약 카드 */}
@@ -663,42 +670,30 @@ export default function App() {
         )}
       </div>
 
-      <nav className="bg-white/95 backdrop-blur-md border-t border-gray-100 shrink-0 z-50 safe-area-bottom">
-        <div className="flex items-center justify-center gap-4 px-4 py-2 pb-[env(safe-area-inset-bottom,8px)]">
+      <nav className="bg-white border-t border-gray-200 shrink-0 z-50">
+        <div className="flex items-center justify-around py-1.5 pb-[max(6px,env(safe-area-inset-bottom))]">
           <button 
             onClick={() => setActiveTab('CHATS')} 
-            className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-200 ${
-              activeTab === 'CHATS' 
-                ? 'bg-gradient-to-r from-[#7EA1FF] to-[#A29BFE] text-white shadow-md' 
-                : 'text-gray-400 active:bg-gray-100'
+            className={`flex flex-col items-center gap-0.5 px-6 py-1.5 rounded-xl transition-colors ${
+              activeTab === 'CHATS' ? 'text-[#7EA1FF]' : 'text-gray-400'
             }`}
           >
-            <div className="relative">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <rect x="5" y="7" width="14" height="12" rx="3" />
-                <circle cx="12" cy="4" r="1.5" />
-                <rect x="11.25" y="5" width="1.5" height="2" />
-                <circle cx="9" cy="12" r="1.5" fill={activeTab === 'CHATS' ? '#7EA1FF' : 'white'} />
-                <circle cx="15" cy="12" r="1.5" fill={activeTab === 'CHATS' ? '#7EA1FF' : 'white'} />
-                <path d="M9 15.5c0 0 1.5 1.5 3 1.5s3-1.5 3-1.5" stroke={activeTab === 'CHATS' ? '#7EA1FF' : 'white'} strokeWidth="1.2" strokeLinecap="round" fill="none"/>
-              </svg>
-              {activeTab === 'CHATS' && <span className="absolute -top-1 -right-1 text-[6px]">✨</span>}
-            </div>
-            <span className="text-[12px] font-bold">AI코치</span>
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+            </svg>
+            <span className="text-[10px] font-bold">AI코치</span>
           </button>
           
           <button 
             onClick={() => setActiveTab('INSIGHTS')} 
-            className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-200 ${
-              activeTab === 'INSIGHTS' 
-                ? 'bg-gradient-to-r from-[#7EA1FF] to-[#A29BFE] text-white shadow-md' 
-                : 'text-gray-400 active:bg-gray-100'
+            className={`flex flex-col items-center gap-0.5 px-6 py-1.5 rounded-xl transition-colors ${
+              activeTab === 'INSIGHTS' ? 'text-[#7EA1FF]' : 'text-gray-400'
             }`}
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
             </svg>
-            <span className="text-[12px] font-bold">리포트</span>
+            <span className="text-[10px] font-bold">리포트</span>
           </button>
         </div>
       </nav>
