@@ -1,0 +1,17 @@
+
+{
+  "short_name": "JARAYO",
+  "name": "JARAYO - AI 육아 코치",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3069/3069172.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#7EA1FF",
+  "background_color": "#FDFBFA"
+}

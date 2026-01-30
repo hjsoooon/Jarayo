@@ -1,0 +1,7 @@
+{
+  "name": "JARAYO - AI 육아 코치",
+  "description": "믿을 수 있는 전문가가 검수한 듯한 육아 인사이트를 제공하는 AI 코치 서비스입니다. 심리, 건강, 영양 등 분야별 전문가와 1:1 상담이 가능합니다.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
