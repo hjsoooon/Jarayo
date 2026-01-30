@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #7EA1FF;
+  --primary-gradient: linear-gradient(90deg, #7EA1FF, #A29BFE);
+  --bg-warm: #FDFBFA;
+  --text-main: #3D3D3D;
+  --text-sub: #8E8E8E;
+  --ai-glow: rgba(126, 161, 255, 0.4);
+}
+
+body { 
+  font-family: 'Noto Sans KR', sans-serif; 
+  background-color: var(--bg-warm); 
+  color: var(--text-main); 
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.02em;
+  overflow: hidden;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mono { font-family: 'JetBrains Mono', monospace; }
+.outfit { font-family: 'Outfit', sans-serif; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.header-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.01em;
+}
+
+.tab-content-enter {
+  animation: tabEnter 0.3s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes tabEnter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bubble-pop {
+  animation: bubblePop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  will-change: opacity, transform;
+}
+
+@keyframes bubblePop {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.ai-pulse-ring {
+  position: relative;
+}
+
+.ai-pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border: 1.5px solid var(--primary);
+  border-radius: inherit;
+  animation: ai-pulse 2s infinite linear;
+  opacity: 0;
+}
+
+@keyframes ai-pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+
+.chat-container {
+  background-color: #FDFBFA;
+  background-image: 
+    radial-gradient(at 100% 0%, rgba(126, 161, 255, 0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(162, 155, 254, 0.05) 0px, transparent 50%);
+  position: relative;
+}
+
+.nav-active-pill {
+  position: absolute;
+  height: 52px;
+  width: 100px;
+  background: var(--primary);
+  opacity: 0.1;
+  border-radius: 20px;
+  z-index: 0;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  top: 14px;
+}
