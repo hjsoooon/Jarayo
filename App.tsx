@@ -663,48 +663,42 @@ export default function App() {
         )}
       </div>
 
-      <nav className="bg-white border-t border-gray-100 shrink-0 z-50 pb-safe">
-        <div className="flex items-center justify-around px-6 py-3">
+      <nav className="bg-white/95 backdrop-blur-md border-t border-gray-100 shrink-0 z-50 safe-area-bottom">
+        <div className="flex items-center justify-center gap-4 px-4 py-2 pb-[env(safe-area-inset-bottom,8px)]">
           <button 
             onClick={() => setActiveTab('CHATS')} 
-            className={`relative flex flex-col items-center gap-1 px-6 py-2 rounded-2xl transition-all duration-300 ${
+            className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-200 ${
               activeTab === 'CHATS' 
-                ? 'bg-gradient-to-br from-[#7EA1FF] to-[#A29BFE] text-white shadow-lg shadow-blue-200/50' 
-                : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'
+                ? 'bg-gradient-to-r from-[#7EA1FF] to-[#A29BFE] text-white shadow-md' 
+                : 'text-gray-400 active:bg-gray-100'
             }`}
           >
             <div className="relative">
-              {/* AI 로봇 아이콘 */}
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                {/* 로봇 머리 */}
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <rect x="5" y="7" width="14" height="12" rx="3" />
-                {/* 안테나 */}
                 <circle cx="12" cy="4" r="1.5" />
                 <rect x="11.25" y="5" width="1.5" height="2" />
-                {/* 눈 - 빛나는 효과 */}
                 <circle cx="9" cy="12" r="1.5" fill={activeTab === 'CHATS' ? '#7EA1FF' : 'white'} />
                 <circle cx="15" cy="12" r="1.5" fill={activeTab === 'CHATS' ? '#7EA1FF' : 'white'} />
-                {/* 입 - 웃는 모양 */}
                 <path d="M9 15.5c0 0 1.5 1.5 3 1.5s3-1.5 3-1.5" stroke={activeTab === 'CHATS' ? '#7EA1FF' : 'white'} strokeWidth="1.2" strokeLinecap="round" fill="none"/>
               </svg>
-              {/* AI 스파클 효과 */}
-              <span className={`absolute -top-1 -right-1 text-[8px] ${activeTab === 'CHATS' ? 'animate-pulse' : ''}`}>✨</span>
+              {activeTab === 'CHATS' && <span className="absolute -top-1 -right-1 text-[6px]">✨</span>}
             </div>
-            <span className="text-[10px] font-bold tracking-wide">AI코치</span>
+            <span className="text-[12px] font-bold">AI코치</span>
           </button>
           
           <button 
             onClick={() => setActiveTab('INSIGHTS')} 
-            className={`relative flex flex-col items-center gap-1 px-6 py-2 rounded-2xl transition-all duration-300 ${
+            className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-200 ${
               activeTab === 'INSIGHTS' 
-                ? 'bg-gradient-to-br from-[#7EA1FF] to-[#A29BFE] text-white shadow-lg shadow-blue-200/50' 
-                : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'
+                ? 'bg-gradient-to-r from-[#7EA1FF] to-[#A29BFE] text-white shadow-md' 
+                : 'text-gray-400 active:bg-gray-100'
             }`}
           >
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
             </svg>
-            <span className="text-[10px] font-bold tracking-wide">리포트</span>
+            <span className="text-[12px] font-bold">리포트</span>
           </button>
         </div>
       </nav>
