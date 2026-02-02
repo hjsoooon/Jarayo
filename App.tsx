@@ -240,10 +240,10 @@ export default function App() {
                     {/* 관련 질문 버튼 */}
                     <button 
                       onClick={() => {
-                        setInputText(selectedGuide.fullGuide?.relatedQuestion || '');
+                        const question = selectedGuide.fullGuide?.relatedQuestion || '';
                         setSelectedGuide(null);
                         setActiveTab('CHATS');
-                        setTimeout(() => inputRef.current?.focus(), 100);
+                        setTimeout(() => handleSendMessage(question), 150);
                       }}
                       className="w-full py-3.5 bg-gradient-to-r from-[#7EA1FF] to-[#A29BFE] text-white font-bold text-[13px] rounded-xl shadow-lg shadow-blue-200/50 active:scale-[0.98] transition-transform flex items-center justify-center gap-2"
                     >

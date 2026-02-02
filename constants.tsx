@@ -424,7 +424,7 @@ export const COACH_TO_CATEGORY: Record<string, keyof typeof ILLUSTRATION_CARDS> 
 export const KEYWORD_RESPONSES = {
   // 수면 관련
   SLEEP: {
-    keywords: ['잠', '수면', '통잠', '낮잠', '밤잠', '잠투정', '재우', '깨', '자다', '눕히', '수면교육', '백색소음', '화이트노이즈', '자장가'],
+    keywords: ['잠', '수면', '통잠', '낮잠', '밤잠', '잠투정', '재우', '깨', '자다', '눕히', '수면교육', '백색소음', '화이트노이즈', '자장가', '루틴', '의식', '온도', '방', '도', '습도', '어두'],
     greetingKeywords: ['안녕', '하이', '헬로', 'hi', 'hello', '반가', '처음', '시작', '뭐해', '계세요', '누구'],
     coachId: 'SLEEP_EXPERT' as const,
     greetingResponse: {
@@ -535,7 +535,7 @@ export const KEYWORD_RESPONSES = {
   
   // 발달 관련
   DEVELOPMENT: {
-    keywords: ['발달', '성장', '뒤집', '기어', '앉', '서', '걷', '말', '옹알이', '대근육', '소근육', '인지', '월령', '또래', '느린', '빠른', '터미타임'],
+    keywords: ['발달', '성장', '뒤집', '기어', '앉', '서', '걷', '말', '옹알이', '대근육', '소근육', '인지', '월령', '또래', '느린', '빠른', '터미타임', '늦', '놀이', '추천'],
     greetingKeywords: ['안녕', '하이', '헬로', 'hi', 'hello', '반가', '처음', '시작', '뭐해', '계세요', '누구'],
     coachId: 'DEVELOPMENT_COACH' as const,
     greetingResponse: {
@@ -572,7 +572,7 @@ export const KEYWORD_RESPONSES = {
   
   // 배변 관련
   POOP: {
-    keywords: ['똥', '응가', '변', '기저귀', '배변', '변비', '설사', '대변', '소변', '쉬', '화장실', '변기', '훈련'],
+    keywords: ['똥', '응가', '변', '기저귀', '배변', '변비', '설사', '대변', '소변', '쉬', '화장실', '변기', '훈련', '무서', '떼는', '졸업'],
     greetingKeywords: ['안녕', '하이', '헬로', 'hi', 'hello', '반가', '처음', '시작', '뭐해', '계세요', '누구'],
     coachId: 'POOP_GUIDE' as const,
     greetingResponse: {
@@ -658,7 +658,7 @@ export const KEYWORD_RESPONSES = {
 
   // 힘듦/걱정 표현
   CONCERN: {
-    keywords: ['힘들', '지치', '피곤', '걱정', '불안', '모르겠', '어렵', '어려워', '못하겠', '안돼', '안되', '실패', '잘못', '미안', '죄책감', '우울', '답답', '짜증', '화나', '미치겠', '포기'],
+    keywords: ['힘들', '지치', '피곤', '걱정', '불안', '모르겠', '어렵', '어려워', '못하겠', '안돼', '안되', '실패', '잘못', '미안', '죄책감', '우울', '답답', '짜증', '화나', '미치겠', '포기', '막막', '처음이라'],
     coachId: 'PSYCHOLOGY' as const,
     responses: [
       {
