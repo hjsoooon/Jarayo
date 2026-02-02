@@ -55,6 +55,35 @@ export default function App() {
     return saved ? JSON.parse(saved) : {};
   });
 
+  // description을 "~하기" 형식의 체크리스트 텍스트로 변환
+  const toChecklistText = (description: string): string => {
+    // 첫 문장만 추출 (마침표, 느낌표 기준)
+    let text = description.split(/[.!]/)[0].trim();
+    
+    // "~하세요", "~해요", "~해주세요" 등을 "~하기"로 변환
+    text = text
+      .replace(/하세요$/, '하기')
+      .replace(/해요$/, '하기')
+      .replace(/해주세요$/, '해주기')
+      .replace(/주세요$/, '주기')
+      .replace(/보세요$/, '보기')
+      .replace(/드려요$/, '드리기')
+      .replace(/돼요$/, '되기')
+      .replace(/에요$/, '');
+    
+    // 이미 "~하기"로 끝나면 그대로, 아니면 조사 정리
+    if (!text.endsWith('하기') && !text.endsWith('주기') && !text.endsWith('보기')) {
+      // 동사형이 아닌 경우 그대로 사용
+    }
+    
+    // 너무 길면 자르기 (30자)
+    if (text.length > 30) {
+      text = text.substring(0, 28) + '...';
+    }
+    
+    return text;
+  };
+
   // 채팅에서 추출한 동적 체크리스트 생성
   const dynamicChecklist = React.useMemo(() => {
     const allTips = messages
@@ -72,8 +101,8 @@ export default function App() {
       .slice(-6) // 최근 6개만
       .map((tip) => ({
         id: `tip-${tip.title.replace(/\s/g, '-')}`,
-        text: tip.title,
-        description: tip.description,
+        text: toChecklistText(tip.description),
+        description: tip.title,
         completed: completedChecklist[`tip-${tip.title.replace(/\s/g, '-')}`] || false,
         category: tip.category || 'GENERAL',
         icon: tip.icon
