@@ -1,6 +1,6 @@
 
 import { Message, ActionTip, CoachRole } from "./types";
-import { KEYWORD_RESPONSES } from "./constants";
+import { KEYWORD_RESPONSES, SPECIFIC_RESPONSES } from "./constants";
 
 // 키워드 기반 응답 시스템 (AI API 호출 없음)
 export const getGeminiResponse = async (
@@ -8,6 +8,18 @@ export const getGeminiResponse = async (
   userPrompt: string, 
   forcedCoachId?: CoachRole
 ): Promise<{ text: string, tips?: ActionTip[], selectedCoachId: CoachRole }> => {
+  
+  // 특정 질문에 대한 맞춤 응답 체크 (relatedQuestion용)
+  const specificResponse = SPECIFIC_RESPONSES[userPrompt];
+  if (specificResponse) {
+    // 약간의 지연을 추가하여 자연스러운 느낌 제공
+    await new Promise(resolve => setTimeout(resolve, 200 + Math.random() * 300));
+    return {
+      text: specificResponse.text,
+      tips: specificResponse.tips,
+      selectedCoachId: specificResponse.coachId as CoachRole
+    };
+  }
   
   // 입력 텍스트를 소문자로 변환하여 키워드 매칭
   const input = userPrompt.toLowerCase();

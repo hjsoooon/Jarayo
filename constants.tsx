@@ -714,3 +714,171 @@ export const KEYWORD_RESPONSES = {
     ]
   }
 };
+
+// 특정 질문에 대한 맞춤 응답 (relatedQuestion용)
+export const SPECIFIC_RESPONSES: Record<string, { text: string; tips: any[]; coachId: string }> = {
+  // 수면 관련
+  '수면 의식 루틴 만들기가 어려워요': {
+    text: "수면 의식 루틴, 처음엔 막막하시죠? 😴 걱정 마세요, 생각보다 간단해요! 핵심은 '매일 같은 순서'입니다. 저녁 7시쯤 시작해서 ①따뜻한 목욕(10분) → ②조용한 방에서 수유(15-20분) → ③자장가나 책 읽기(5분) → ④잠자리에 눕히기 순서로 진행해보세요. 2주만 꾸준히 하면 아이가 '이제 잘 시간이구나'를 인식하기 시작해요!",
+    tips: [
+      { icon: '🌙', title: '루틴의 핵심 = 일관성', description: '매일 같은 시간, 같은 순서로 진행하세요. 주말도 예외 없이!', type: 'SUCCESS' as const, category: 'SLEEP' as const },
+      { icon: '⏰', title: '적정 시작 시간', description: '수면 의식은 취침 30-40분 전부터 시작하는 것이 좋아요.', type: 'INFO' as const, category: 'SLEEP' as const },
+      { icon: '📱', title: '자극 줄이기', description: '수면 의식 시작 1시간 전부터 TV, 스마트폰 등 자극은 피해주세요.', type: 'WARNING' as const, category: 'SLEEP' as const }
+    ],
+    coachId: 'SLEEP_EXPERT'
+  },
+  '화이트노이즈 언제까지 사용해도 될까요?': {
+    text: "화이트노이즈 사용 시기, 좋은 질문이에요! 🔊 결론부터 말씀드리면, 생후 12개월까지는 안심하고 사용하셔도 됩니다. 다만 볼륨은 50dB 이하(대화 소리 정도)로 유지하고, 아이와 1m 이상 거리를 두세요. 12개월 이후에는 서서히 볼륨을 줄여가며 끊는 것을 권장해요. 갑자기 끊으면 아이가 힘들어할 수 있어요!",
+    tips: [
+      { icon: '🔈', title: '적정 볼륨 50dB', description: '일반 대화 수준의 볼륨이 적당해요. 너무 크면 청력에 영향을 줄 수 있어요.', type: 'WARNING' as const, category: 'SLEEP' as const },
+      { icon: '📅', title: '끊는 시기와 방법', description: '12개월 이후 2주에 걸쳐 볼륨을 10%씩 줄여가세요.', type: 'INFO' as const, category: 'SLEEP' as const },
+      { icon: '📏', title: '거리 유지하기', description: '화이트노이즈 기기는 아이로부터 최소 1m 이상 떨어뜨려 놓으세요.', type: 'SUCCESS' as const, category: 'SLEEP' as const }
+    ],
+    coachId: 'SLEEP_EXPERT'
+  },
+  '아이 방 적정 온도가 몇 도예요?': {
+    text: "아이 방 온도, 정말 중요한 부분이에요! 🌡️ 최적의 수면 환경은 **온도 20-22도, 습도 50-60%**입니다. 신생아는 체온 조절이 미숙해서 방이 너무 덥거나 추우면 숙면이 어려워요. 여름엔 에어컨으로 24도까지는 괜찮고, 겨울엔 18도 아래로 내려가지 않게 해주세요. 손발이 차가운 건 정상이에요, 목이나 등이 따뜻하면 적정 온도랍니다!",
+    tips: [
+      { icon: '🌡️', title: '최적 온도 20-22도', description: '신생아는 20-22도, 영아는 18-21도가 적정해요.', type: 'SUCCESS' as const, category: 'SLEEP' as const },
+      { icon: '💧', title: '습도 50-60% 유지', description: '가습기나 젖은 수건으로 습도를 조절해주세요.', type: 'INFO' as const, category: 'SLEEP' as const },
+      { icon: '👶', title: '체온 확인법', description: '손발 말고 목 뒤나 등을 만져보세요. 따뜻하면 OK!', type: 'INFO' as const, category: 'SLEEP' as const }
+    ],
+    coachId: 'SLEEP_EXPERT'
+  },
+  
+  // 이유식 관련
+  '이유식 시작 시기가 언제예요?': {
+    text: "이유식 시작 시기, 궁금하셨죠? 🥣 WHO 권장 기준으로 **생후 만 6개월(180일)**이 가장 좋아요. 다만 아이마다 다르니 다음 신호를 확인해보세요: ①목을 가누고 앉을 수 있다 ②음식에 관심을 보인다 ③혀로 음식을 밀어내는 반사가 줄었다 ④침을 잘 삼킨다. 이 4가지가 모두 충족되면 시작해볼 수 있어요!",
+    tips: [
+      { icon: '📅', title: '권장 시작 시기', description: '만 6개월(180일)이 권장되지만, 빨라도 만 4개월 이전은 피하세요.', type: 'SUCCESS' as const, category: 'NUTRITION' as const },
+      { icon: '👀', title: '이유식 시작 신호', description: '음식에 관심, 목 가누기, 입 벌리기 등의 신호를 확인하세요.', type: 'INFO' as const, category: 'NUTRITION' as const },
+      { icon: '🍚', title: '첫 이유식은 쌀미음', description: '알레르기가 적은 쌀로 만든 10배죽(미음)으로 시작하세요.', type: 'SUCCESS' as const, category: 'NUTRITION' as const }
+    ],
+    coachId: 'NUTRITION'
+  },
+  '철분 보충 어떻게 해야 해요?': {
+    text: "철분 보충, 아주 중요한 질문이에요! 💪 생후 6개월이 지나면 엄마에게서 받은 철분이 고갈되기 시작해요. **소고기**가 철분 보충의 최고 식품입니다! 이유식 초기부터 소고기를 곱게 갈아 쌀미음에 섞어주세요. 하루 20-30g 정도면 충분해요. 달걀 노른자, 시금치, 브로콜리도 좋은 철분 공급원이에요.",
+    tips: [
+      { icon: '🥩', title: '소고기가 최고!', description: '붉은 살코기가 철분 흡수율이 가장 높아요. 매일 조금씩 주세요.', type: 'SUCCESS' as const, category: 'NUTRITION' as const },
+      { icon: '🍊', title: '비타민C와 함께', description: '철분은 비타민C와 함께 먹으면 흡수율이 2-3배 높아져요.', type: 'INFO' as const, category: 'NUTRITION' as const },
+      { icon: '🥛', title: '우유와 분리해서', description: '우유의 칼슘이 철분 흡수를 방해해요. 이유식과 분유는 1시간 간격을 두세요.', type: 'WARNING' as const, category: 'NUTRITION' as const }
+    ],
+    coachId: 'NUTRITION'
+  },
+  '알레르기 반응이 어떻게 나타나요?': {
+    text: "알레르기 반응, 미리 알아두시면 좋아요! ⚠️ 새 음식을 먹인 후 **2시간 이내**에 나타나는 증상을 주의 깊게 봐주세요. 주요 증상은: ①피부 발진/두드러기 ②입술/혀 부종 ③구토/설사 ④호흡곤란 ⑤심한 보챔 입니다. 경미한 발진 정도는 지켜봐도 되지만, 호흡곤란이나 전신 두드러기는 즉시 응급실로 가세요!",
+    tips: [
+      { icon: '📋', title: '3일 규칙 지키기', description: '새 식재료는 3일간 같은 것만 주고 반응을 관찰하세요.', type: 'SUCCESS' as const, category: 'NUTRITION' as const },
+      { icon: '⏰', title: '새 음식은 오전에', description: '새 식재료는 오전에 주면 반응이 나타나도 병원 가기 쉬워요.', type: 'INFO' as const, category: 'NUTRITION' as const },
+      { icon: '🚨', title: '응급 상황', description: '호흡곤란, 입술 부종, 전신 두드러기는 즉시 119 또는 응급실!', type: 'WARNING' as const, category: 'NUTRITION' as const }
+    ],
+    coachId: 'NUTRITION'
+  },
+  
+  // 심리 관련
+  '애착 형성 어떻게 해야 해요?': {
+    text: "애착 형성, 어렵게 생각하지 않으셔도 돼요! 💕 가장 중요한 건 **일관되고 따뜻한 반응**이에요. 아이가 울 때 안아주고, 웃을 때 함께 웃어주고, 옹알이하면 대답해주세요. 이런 작은 반응들이 쌓여서 \"엄마 아빠는 날 사랑하고 보호해줘\"라는 안정감이 됩니다. 하루 15분 스마트폰 없이 눈 맞추며 놀아주는 것도 큰 도움이 돼요!",
+    tips: [
+      { icon: '👀', title: '눈 맞춤이 핵심', description: '수유할 때, 기저귀 갈 때 아이 눈을 보며 말해주세요.', type: 'SUCCESS' as const, category: 'PSYCHOLOGY' as const },
+      { icon: '🤗', title: '스킨십의 힘', description: '안아주기, 쓰다듬기, 마사지 등 피부 접촉이 애착을 강화해요.', type: 'SUCCESS' as const, category: 'PSYCHOLOGY' as const },
+      { icon: '🗣️', title: '반응해주기', description: '아이의 옹알이, 표정, 몸짓에 말로 반응해주세요.', type: 'INFO' as const, category: 'PSYCHOLOGY' as const }
+    ],
+    coachId: 'PSYCHOLOGY'
+  },
+  '아이가 떼쓸 때 어떻게 해요?': {
+    text: "떼쓰기, 정말 힘드시죠? 😮‍💨 하지만 이건 정상적인 발달 과정이에요! 아이가 감정을 표현하는 법을 배우는 중이랍니다. 핵심 대응법은: ①먼저 공감 (\"화가 났구나\") → ②안전하게 두기 (다치지 않게) → ③지나친 관심은 NO → ④진정되면 대화하기 입니다. 절대 요구를 들어주지 마세요, 그러면 떼쓰면 된다고 학습해요!",
+    tips: [
+      { icon: '💬', title: '감정 먼저 인정', description: '\"화났구나\", \"속상하구나\" 감정을 먼저 말로 표현해주세요.', type: 'SUCCESS' as const, category: 'PSYCHOLOGY' as const },
+      { icon: '🚫', title: '요구 들어주지 않기', description: '떼쓴다고 요구를 들어주면 \"떼쓰면 된다\"고 학습해요.', type: 'WARNING' as const, category: 'PSYCHOLOGY' as const },
+      { icon: '⏰', title: '기다려주기', description: '안전한 곳에서 스스로 진정할 시간을 주세요. 2-5분이면 OK.', type: 'INFO' as const, category: 'PSYCHOLOGY' as const }
+    ],
+    coachId: 'PSYCHOLOGY'
+  },
+  '분리불안이 심해요': {
+    text: "분리불안, 힘드시죠? 😢 하지만 좋은 소식이에요 - 분리불안은 애착이 잘 형성됐다는 증거랍니다! 갑자기 사라지지 말고, **이별 의식**을 만들어보세요. \"엄마 화장실 갔다 올게, 금방 와!\" 하고 예고 → 짧게 다녀오기 → \"왔다!\" 하고 돌아오기. 5분 → 10분 → 30분으로 점차 시간을 늘려가면 \"엄마는 다시 온다\"를 학습해요.",
+    tips: [
+      { icon: '👋', title: '이별 의식 만들기', description: '\"뽀뽀하고 안녕!\" 같은 짧은 의식으로 예측 가능하게 해주세요.', type: 'SUCCESS' as const, category: 'PSYCHOLOGY' as const },
+      { icon: '⏱️', title: '점진적 연습', description: '5분 → 10분 → 30분 순으로 떨어져 있는 시간을 점차 늘려요.', type: 'INFO' as const, category: 'PSYCHOLOGY' as const },
+      { icon: '🚫', title: '몰래 사라지기 금지', description: '아이 모르게 사라지면 불안이 더 커져요. 항상 인사하세요.', type: 'WARNING' as const, category: 'PSYCHOLOGY' as const }
+    ],
+    coachId: 'PSYCHOLOGY'
+  },
+  
+  // 발달 관련
+  '우리 아이 발달이 늦은 거 아닐까요?': {
+    text: "발달 걱정, 부모님이라면 누구나 하세요 🤗 먼저 말씀드리고 싶은 건, **모든 아이는 자기만의 속도**가 있다는 거예요. 발달 이정표는 평균일 뿐, 1-2개월 차이는 완전히 정상 범위입니다! 다만, 또래와 3개월 이상 차이가 나거나 이미 했던 것을 갑자기 못하게 된다면 소아과 상담을 권해드려요. 너무 걱정 마시고, 매일 조금씩 자극을 주세요!",
+    tips: [
+      { icon: '📊', title: '1-2개월 차이는 정상', description: '발달표는 평균이에요. 개인차가 크니 비교보다 관찰이 중요해요.', type: 'INFO' as const, category: 'DEVELOPMENT' as const },
+      { icon: '🏥', title: '이럴 땐 상담 필요', description: '3개월 이상 지연, 퇴행(했던 걸 못함), 눈 맞춤 안됨 → 소아과 상담', type: 'WARNING' as const, category: 'DEVELOPMENT' as const },
+      { icon: '🎯', title: '매일 자극 주기', description: '하루 10분이라도 눈 맞추며 함께 놀아주는 것이 최고의 발달 자극이에요.', type: 'SUCCESS' as const, category: 'DEVELOPMENT' as const }
+    ],
+    coachId: 'DEVELOPMENT_COACH'
+  },
+  '터미타임 어떻게 해요?': {
+    text: "터미타임(엎드려 놀기), 아주 중요해요! 💪 목과 등 근육을 발달시켜 뒤집기, 기어가기의 기초가 됩니다. 방법은: ①평평한 바닥에 아이를 엎어 놓기 ②눈높이에 장난감 두기 ③하루 3-5분씩, 5회 정도 ④아이가 힘들어하면 바로 중단! 처음엔 1분도 힘들 수 있어요. 부모 가슴 위에 엎어놓는 것부터 시작해도 좋아요.",
+    tips: [
+      { icon: '⏱️', title: '하루 목표', description: '하루 총 15-30분, 3-5분씩 여러 번 나눠서 해주세요.', type: 'SUCCESS' as const, category: 'DEVELOPMENT' as const },
+      { icon: '🧸', title: '흥미 유발', description: '눈앞에 거울이나 소리 나는 장난감을 두면 고개를 들어요.', type: 'INFO' as const, category: 'DEVELOPMENT' as const },
+      { icon: '❤️', title: '엄마 가슴 위에서', description: '처음엔 엄마 가슴 위에 엎어놓고 시작하면 아이가 편안해해요.', type: 'SUCCESS' as const, category: 'DEVELOPMENT' as const }
+    ],
+    coachId: 'DEVELOPMENT_COACH'
+  },
+  '소근육 발달 놀이 추천해주세요': {
+    text: "소근육 발달 놀이, 좋은 질문이에요! ✋ 월령별로 추천드릴게요. **0-6개월**: 손에 딸랑이 쥐어주기, 다양한 질감 만지기 / **6-12개월**: 블록 잡기, 컵 쌓기, 과자 집어먹기 / **12개월 이후**: 크레용 잡기, 스티커 붙이기, 점토 놀이. 일상에서 숟가락 쥐기, 컵 들기도 훌륭한 소근육 운동이에요!",
+    tips: [
+      { icon: '🎨', title: '월령별 놀이', description: '6개월: 딸랑이 / 9개월: 블록 / 12개월: 크레용 / 18개월: 점토', type: 'SUCCESS' as const, category: 'DEVELOPMENT' as const },
+      { icon: '🥄', title: '일상이 놀이', description: '숟가락 쥐기, 컵 들기, 옷 벗기 등 일상 활동도 소근육 운동이에요.', type: 'INFO' as const, category: 'DEVELOPMENT' as const },
+      { icon: '👆', title: '집게 손가락 연습', description: '과자나 뻥튀기를 집게 손가락으로 집어먹게 해보세요.', type: 'SUCCESS' as const, category: 'DEVELOPMENT' as const }
+    ],
+    coachId: 'DEVELOPMENT_COACH'
+  },
+  
+  // 배변 관련
+  '배변 훈련 언제 시작해요?': {
+    text: "배변 훈련 시작 시기, 중요한 질문이에요! 🚽 평균적으로 **18-24개월** 사이에 시작하지만, 핵심은 **아이의 준비 신호**입니다. 체크리스트: ①기저귀 젖은 걸 불편해한다 ②2시간 이상 기저귀가 마른다 ③배변 시 숨거나 힘주는 표정을 짓는다 ④간단한 지시를 이해한다. 이 중 3개 이상이면 시작해볼 수 있어요!",
+    tips: [
+      { icon: '📋', title: '준비 신호 체크', description: '기저귀 불편해함, 2시간 이상 마름, 배변 신호 보임 → 준비 완료!', type: 'SUCCESS' as const, category: 'POOP' as const },
+      { icon: '⏰', title: '적정 시기', description: '평균 18-24개월이지만 아이마다 달라요. 36개월까지도 정상이에요.', type: 'INFO' as const, category: 'POOP' as const },
+      { icon: '🚫', title: '너무 일찍은 NO', description: '18개월 전에 시작하면 오히려 훈련 기간이 길어질 수 있어요.', type: 'WARNING' as const, category: 'POOP' as const }
+    ],
+    coachId: 'POOP_GUIDE'
+  },
+  '아이가 변기를 무서워해요': {
+    text: "변기 공포증, 의외로 흔해요! 😰 아이 입장에서 변기는 크고, 소리도 무섭고, 빨려들어갈 것 같거든요. 해결법: ①아이 전용 유아변기 사용 ②변기에 앉기만 해도 칭찬 (배변 안 해도 OK) ③인형으로 변기 앉는 놀이 ④좋아하는 캐릭터 변기 시트 사용 ⑤물 내리는 건 아이가 안 볼 때. 절대 강요하지 마세요, 거부감만 커져요!",
+    tips: [
+      { icon: '🪑', title: '유아 전용 변기', description: '바닥에 놓는 유아 변기로 시작하면 안정감을 느껴요.', type: 'SUCCESS' as const, category: 'POOP' as const },
+      { icon: '🧸', title: '인형 놀이', description: '인형을 변기에 앉히는 놀이를 통해 거부감을 줄여보세요.', type: 'INFO' as const, category: 'POOP' as const },
+      { icon: '🚽', title: '물 내리는 소리', description: '변기 물 내리는 건 아이가 안 볼 때 해주세요. 소리가 무서울 수 있어요.', type: 'WARNING' as const, category: 'POOP' as const }
+    ],
+    coachId: 'POOP_GUIDE'
+  },
+  '기저귀 떼는 법 알려주세요': {
+    text: "기저귀 졸업, 체계적으로 도와드릴게요! 🎉 **3단계 전략**: ①**친해지기**(1-2주): 유아변기 구경, 옷 입고 앉아보기 ②**연습하기**(2-4주): 아침/낮잠 후/목욕 전 변기 앉기, 성공하면 크게 칭찬 ③**졸업하기**: 낮에 팬티로 바꾸기 → 외출 시 → 밤잠 순서로 진행. 실수해도 절대 혼내지 마세요, 평균 3-6개월 걸려요!",
+    tips: [
+      { icon: '📅', title: '3단계 전략', description: '친해지기(2주) → 연습하기(4주) → 졸업하기 순서로 천천히!', type: 'SUCCESS' as const, category: 'POOP' as const },
+      { icon: '👖', title: '팬티로 전환', description: '낮 시간 팬티 → 외출 시 팬티 → 밤잠 팬티 순서로 바꿔요.', type: 'INFO' as const, category: 'POOP' as const },
+      { icon: '❤️', title: '실수해도 OK', description: '실수해도 혼내지 마세요. \"괜찮아, 다음에 하자\" 가 정답이에요.', type: 'SUCCESS' as const, category: 'POOP' as const }
+    ],
+    coachId: 'POOP_GUIDE'
+  },
+  
+  // 일반
+  '육아가 처음이라 막막해요': {
+    text: "처음이라 막막하신 거 너무 당연해요! 🤗 저도 처음엔 다 그랬답니다. 완벽한 부모는 없어요, 아이와 함께 배워가는 거예요. 당장 필요한 핵심만 알려드릴게요: ①배고프면 먹이기 ②졸리면 재우기 ③기저귀 갈아주기 ④많이 안아주기. 이 4가지만 해도 90%는 하고 있는 거예요! 나머지는 하나씩 배워가면 됩니다 💪",
+    tips: [
+      { icon: '💪', title: '핵심 4가지만!', description: '먹이기, 재우기, 기저귀, 안아주기. 이것만 해도 훌륭해요!', type: 'SUCCESS' as const, category: 'GENERAL' as const },
+      { icon: '📱', title: '기록하기', description: '수유, 수면, 기저귀 시간을 기록하면 패턴이 보여요.', type: 'INFO' as const, category: 'GENERAL' as const },
+      { icon: '🆘', title: '도움 요청하기', description: '혼자 다 하려 하지 마세요. 가족, 주변에 도움을 요청하세요.', type: 'INFO' as const, category: 'GENERAL' as const }
+    ],
+    coachId: 'PSYCHOLOGY'
+  },
+  '육아가 너무 힘들어요': {
+    text: "정말 수고 많으셨어요... 💕 힘들다고 느끼시는 건 당연한 거예요. 육아는 24시간 쉼 없는 일이잖아요. 잠깐이라도 **나를 위한 시간**을 가지세요. 아이가 자면 집안일 말고 눈 붙이세요. 완벽하지 않아도 괜찮아요. 배달음식 먹어도, 집이 좀 지저분해도, 아이에게 중요한 건 **건강한 부모**랍니다. 힘들면 쉬어가도 돼요 🤗",
+    tips: [
+      { icon: '😴', title: '아이 자면 나도 자기', description: '집안일은 나중에! 아이 낮잠 시간엔 엄마도 쉬세요.', type: 'SUCCESS' as const, category: 'GENERAL' as const },
+      { icon: '📞', title: '대화 나누기', description: '친구나 가족과 통화하며 힘든 마음을 나눠보세요.', type: 'INFO' as const, category: 'GENERAL' as const },
+      { icon: '🆘', title: '전문 상담', description: '우울감이 2주 이상 지속되면 산후우울증일 수 있어요. 상담을 권해요.', type: 'WARNING' as const, category: 'GENERAL' as const }
+    ],
+    coachId: 'PSYCHOLOGY'
+  }
+};
