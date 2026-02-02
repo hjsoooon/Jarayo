@@ -57,16 +57,24 @@ export default function App() {
 
   // 채팅에서 추출한 동적 체크리스트 생성
   const dynamicChecklist = React.useMemo(() => {
-    const tipsFromChat = messages
+    const allTips = messages
       .filter(m => m.role === 'assistant' && m.tips && m.tips.length > 0)
       .flatMap(m => m.tips || [])
-      .filter(tip => tip.type === 'SUCCESS') // 추천 타입만 체크리스트로
+      .filter(tip => tip.type === 'SUCCESS'); // 추천 타입만 체크리스트로
+    
+    // title 기준으로 중복 제거 (최신 것 유지)
+    const uniqueTips = allTips.reduce((acc, tip) => {
+      acc.set(tip.title, tip);
+      return acc;
+    }, new Map());
+    
+    const tipsFromChat = Array.from(uniqueTips.values())
       .slice(-6) // 최근 6개만
-      .map((tip, idx) => ({
-        id: `tip-${idx}-${tip.title}`,
+      .map((tip) => ({
+        id: `tip-${tip.title.replace(/\s/g, '-')}`,
         text: tip.title,
         description: tip.description,
-        completed: completedChecklist[`tip-${idx}-${tip.title}`] || false,
+        completed: completedChecklist[`tip-${tip.title.replace(/\s/g, '-')}`] || false,
         category: tip.category || 'GENERAL',
         icon: tip.icon
       }));
