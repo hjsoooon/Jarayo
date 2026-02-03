@@ -374,8 +374,8 @@ export default function App() {
                   <div className="relative mb-4">
                     <div className="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl border border-gray-50">👶</div>
                   </div>
-                  <h2 className="text-[17px] font-black text-[#333] mb-1 text-center">육아 고민, 물어보세요!</h2>
-                  <p className="text-[13px] text-[#888] text-center mb-6">수면, 이유식, 발달, 심리 전문가가 답변해요</p>
+                  <h2 className="text-[17px] font-black text-[#333] mb-1 text-center">무엇이든 물어보세요!</h2>
+                  <p className="text-[13px] text-[#888] text-center mb-6">AI 육아코치가 24시간 답변해드려요</p>
                   
                   <div className="w-full space-y-2">
                     {COACHES.slice(0, 3).map((coach, i) => (
