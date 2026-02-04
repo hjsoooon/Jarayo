@@ -165,3 +165,31 @@ html {
     padding-bottom: max(8px, env(safe-area-inset-bottom));
   }
 }
+
+/* 체크리스트 완료 토스트 애니메이션 */
+.animate-fade-in-down {
+  animation: fadeInDown 0.4s cubic-bezier(0.21, 1.02, 0.73, 1) forwards,
+             fadeOutUp 0.3s cubic-bezier(0.55, 0, 1, 0.45) 1.5s forwards;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+}

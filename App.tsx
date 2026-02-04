@@ -5,11 +5,18 @@ import { Message, CoachRole, AppTab, ChecklistItem, InsightReport } from './type
 import { getGeminiResponse } from './geminiService';
 
 const ConfettiEffect = () => (
-  <div className="fixed inset-0 pointer-events-none z-[200] flex items-center justify-center">
-    <div className="animate-ping absolute w-48 h-48 bg-yellow-400/20 rounded-full"></div>
-    <div className="text-5xl animate-bounce">✨🎊✨</div>
-    <div className="absolute top-1/4 left-1/4 animate-ping text-2xl">⭐</div>
-    <div className="absolute bottom-1/4 right-1/4 animate-ping text-2xl delay-75">⭐</div>
+  <div className="fixed inset-x-0 top-20 pointer-events-none z-[200] flex justify-center animate-fade-in-down">
+    <div className="bg-white/95 backdrop-blur-md px-6 py-4 rounded-2xl shadow-lg border border-gray-100 flex items-center gap-3">
+      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center shadow-sm">
+        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/>
+        </svg>
+      </div>
+      <div>
+        <p className="text-[14px] font-bold text-gray-800">잘하셨어요!</p>
+        <p className="text-[12px] text-gray-500">오늘도 한 걸음 성장했어요 ✨</p>
+      </div>
+    </div>
   </div>
 );
 
