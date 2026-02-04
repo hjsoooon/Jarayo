@@ -935,7 +935,10 @@ export default function App() {
       <nav className="bg-white border-t border-gray-200 shrink-0 z-50">
         <div className="flex items-center justify-around py-1.5 pb-[max(6px,env(safe-area-inset-bottom))]">
           <button 
-            onClick={() => setActiveTab('CHATS')} 
+            onClick={() => {
+              updateHash('chat');
+              setActiveTab('CHATS');
+            }} 
             className={`flex flex-col items-center gap-0.5 px-6 py-1.5 rounded-xl transition-colors ${
               activeTab === 'CHATS' ? 'text-[#7EA1FF]' : 'text-gray-400'
             }`}
@@ -947,7 +950,10 @@ export default function App() {
           </button>
           
           <button 
-            onClick={() => setActiveTab('INSIGHTS')} 
+            onClick={() => {
+              updateHash('report');
+              setActiveTab('INSIGHTS');
+            }} 
             className={`flex flex-col items-center gap-0.5 px-6 py-1.5 rounded-xl transition-colors ${
               activeTab === 'INSIGHTS' ? 'text-[#7EA1FF]' : 'text-gray-400'
             }`}
