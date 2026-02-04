@@ -69,6 +69,28 @@ export default function App() {
     return saved ? JSON.parse(saved) : {};
   });
 
+  // 특정 title을 자연스러운 체크리스트 텍스트로 변환하는 매핑
+  const CHECKLIST_TEXT_MAP: Record<string, string> = {
+    '육아는 함께할 때 더 쉬워져요': '주변에 도움 요청하기',
+    '함께해요': 'AI 코치에게 질문하기',
+    '자유롭게 대화하세요': '궁금한 점 편하게 질문하기',
+    '오늘도 수고하셨어요': '오늘 하루 칭찬하기',
+    '당신은 좋은 부모예요': '스스로 격려하기',
+    '잠깐 쉬어가세요': '잠깐이라도 휴식 취하기',
+    '이런 질문을 해보세요': '코치에게 궁금한 점 물어보기',
+    '구체적일수록 좋아요': '상황을 구체적으로 설명하기',
+    '부모도 쉬어야 해요': '나만의 휴식 시간 갖기',
+    '소고기가 최고': '소고기 이유식 만들기',
+    '비타민C와 함께': '철분 + 비타민C 같이 먹이기',
+    '우유와 분리해서': '이유식과 분유 시간 분리하기',
+    '눈 맞춤이 핵심': '아이와 눈 맞추며 대화하기',
+    '1-2개월 차이는 정상': '발달 개인차 이해하기',
+    '이럴 땐 상담 필요': '필요시 소아과 상담받기',
+    '매일 자극 주기': '매일 10분 아이와 놀아주기',
+    '핵심 4가지만': '먹이기, 재우기, 기저귀, 안아주기',
+    '아이 자면 나도 자기': '아이 낮잠 시간에 휴식하기',
+  };
+
   // title을 "~하기" 형식의 간결한 체크리스트 텍스트로 변환
   const toChecklistText = (title: string): string => {
     let text = title
@@ -77,17 +99,31 @@ export default function App() {
       .replace(/\s*\(.+\)$/, '')  // 괄호 내용 제거
       .trim();
     
+    // 미리 정의된 매핑이 있으면 사용
+    if (CHECKLIST_TEXT_MAP[text]) {
+      return CHECKLIST_TEXT_MAP[text];
+    }
+    
     // 이미 "~하기/주기/보기"로 끝나면 그대로
     if (text.endsWith('하기') || text.endsWith('주기') || text.endsWith('보기')) {
       return text;
     }
     
-    // 정보형 문장 ("~있어요", "~해요" 등)은 행동형으로 변환
-    if (text.endsWith('있어요') || text.endsWith('해요') || text.endsWith('예요') || text.endsWith('이에요')) {
-      // "발달은 개인차가 있어요" -> "개인차 인정하기"
-      if (text.includes('개인차')) return '아이 발달 개인차 인정하기';
+    // 정보/격려형 문장 ("~있어요", "~해요", "~세요" 등)은 행동형으로 변환
+    if (text.endsWith('있어요') || text.endsWith('해요') || text.endsWith('예요') || text.endsWith('이에요') || text.endsWith('세요') || text.endsWith('어요') || text.endsWith('아요')) {
+      if (text.includes('개인차')) return '발달 개인차 이해하기';
       if (text.includes('균형')) return '영양 균형 맞추기';
-      return text.replace(/은?\s*(개인차가\s*)?있어요$|해요$|예요$|이에요$/, '') + ' 확인하기';
+      if (text.includes('수고')) return '오늘 하루 칭찬하기';
+      if (text.includes('좋은 부모')) return '스스로 격려하기';
+      if (text.includes('쉬')) return '잠깐이라도 휴식하기';
+      if (text.includes('함께')) return '주변에 도움 요청하기';
+      if (text.includes('대화')) return '편하게 대화하기';
+      // 핵심 명사 추출해서 행동형으로
+      const core = text.replace(/(은|는|이|가|을|를)?\s*(있어요|해요|예요|이에요|세요|어요|아요)$/, '').trim();
+      if (core.length > 1 && core.length < 15) {
+        return core + ' 실천하기';
+      }
+      return '오늘의 팁 확인하기';
     }
     
     // "~의 힘", "~의 마법" 등 수사적 표현 -> 핵심 행동 추출
@@ -147,6 +183,18 @@ export default function App() {
     // 자극 -> "해주기"
     if (text.endsWith('자극')) {
       return text + ' 해주기';
+    }
+    
+    // 너무 긴 문장은 간소화
+    if (text.length > 20) {
+      // 핵심 키워드만 추출
+      const keywords = ['수면', '이유식', '영양', '애착', '발달', '배변', '훈육', '심리'];
+      for (const kw of keywords) {
+        if (text.includes(kw)) {
+          return kw + ' 관련 팁 실천하기';
+        }
+      }
+      return '오늘의 팁 실천하기';
     }
     
     // 기본적으로 "실천하기" 붙이기
