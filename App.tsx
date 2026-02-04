@@ -357,7 +357,7 @@ export default function App() {
                     ))}
                   </div>
                   <div>
-                    <h1 className="header-title text-[18px] leading-tight">JARAYO team</h1>
+                    <h1 className="header-title text-[18px] leading-tight">Team JARAYO</h1>
                     <span className="text-[10px] text-gray-400">AI 육아 코치</span>
                   </div>
                 </div>
