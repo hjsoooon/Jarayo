@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { COACHES, ILLUSTRATION_CARDS, COACH_TO_CATEGORY } from './constants';
 import { Message, CoachRole, AppTab, ChecklistItem, InsightReport } from './types';
 import { getGeminiResponse } from './geminiService';
@@ -13,8 +13,15 @@ const ConfettiEffect = () => (
   </div>
 );
 
+// 해시에서 초기 탭 파싱
+const getInitialTab = (): AppTab => {
+  const hash = window.location.hash;
+  if (hash.includes('report')) return 'INSIGHTS';
+  return 'CHATS';
+};
+
 export default function App() {
-  const [activeTab, setActiveTab] = useState<AppTab>('CHATS');
+  const [activeTab, setActiveTab] = useState<AppTab>(getInitialTab);
   const [timeFilter, setTimeFilter] = useState<'DAILY' | 'WEEKLY' | 'MONTHLY'>('DAILY');
   const [forcedCoachId, setForcedCoachId] = useState<CoachRole | null>(null);
   const [inputText, setInputText] = useState('');
@@ -145,6 +152,51 @@ export default function App() {
     localStorage.setItem('parenting_unified_messages_v3', JSON.stringify(messages));
   }, [messages]);
 
+  // 해시 업데이트 함수
+  const updateHash = useCallback((hash: string) => {
+    if (window.location.hash !== `#${hash}`) {
+      window.location.hash = hash;
+    }
+  }, []);
+
+  // 상태에 따라 해시 동기화
+  useEffect(() => {
+    if (selectedGuide) {
+      updateHash('guide');
+    } else if (activeTab === 'CHATS') {
+      const msgCount = messages.filter(m => m.role === 'user').length;
+      updateHash(msgCount > 0 ? `chat-${msgCount}` : 'chat');
+    } else if (activeTab === 'INSIGHTS') {
+      updateHash('report');
+    }
+  }, [activeTab, selectedGuide, messages, updateHash]);
+
+  // 브라우저 뒤로가기/앞으로가기 처리
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1); // # 제거
+      
+      if (hash === 'guide') {
+        // 가이드는 뒤로가기 시 닫기
+      } else if (hash.startsWith('chat')) {
+        setSelectedGuide(null);
+        setActiveTab('CHATS');
+      } else if (hash === 'report') {
+        setSelectedGuide(null);
+        setActiveTab('INSIGHTS');
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    
+    // 초기 해시 설정 (해시가 없으면 기본값)
+    if (!window.location.hash) {
+      updateHash('chat');
+    }
+
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [updateHash]);
+
   useEffect(() => {
     if (activeTab === 'CHATS') {
       // 탭 전환 시 DOM 렌더링 후 스크롤 이동을 위한 지연
@@ -166,9 +218,13 @@ export default function App() {
     if (!textToSend.trim() || isTyping) return;
     
     const userMessage: Message = { id: Date.now().toString(), role: 'user', content: textToSend, timestamp: new Date() };
+    const newMsgCount = messages.filter(m => m.role === 'user').length + 1;
     setMessages(prev => [...prev, userMessage]);
     setInputText('');
     setIsTyping(true);
+    
+    // 메시지 전송 시 해시 업데이트
+    updateHash(`chat-${newMsgCount}`);
     
     try {
       const response = await getGeminiResponse(messages, textToSend, forcedCoachId || undefined);
@@ -181,6 +237,9 @@ export default function App() {
         tips: response.tips
       };
       setMessages(prev => [...prev, assistantMessage]);
+      
+      // 응답 받은 후 해시 업데이트 (성공)
+      updateHash(`success-${newMsgCount}`);
     } catch (error) { 
       console.error(error); 
     } finally { 
