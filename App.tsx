@@ -15,9 +15,7 @@ const ConfettiEffect = () => (
       <div className="text-6xl animate-bounce-gentle">🎉</div>
       
       {/* 메시지 */}
-      <div className="bg-white/95 backdrop-blur-md px-5 py-2.5 rounded-full shadow-lg">
-        <p className="text-[15px] font-bold text-gray-800">완료!</p>
-      </div>
+      <p className="text-[18px] font-black text-gray-700">완료!</p>
       
       {/* 주변 파티클 */}
       <div className="absolute -top-4 -left-8 text-2xl animate-float-1">✨</div>
