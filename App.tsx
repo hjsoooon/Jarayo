@@ -439,7 +439,7 @@ export default function App() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto h-[100dvh] bg-[#FDFBFA] flex flex-col relative overflow-x-hidden shadow-2xl">
+    <div className="w-full max-w-md mx-auto h-[100dvh] bg-[#FFFDF7] flex flex-col relative overflow-x-hidden shadow-2xl">
       {showConfetti && <ConfettiEffect />}
       
       {/* 가이드 상세 보기 모달 */}
@@ -467,7 +467,7 @@ export default function App() {
                     selectedGuide.category === 'NUTRITION' ? 'bg-teal-50 text-teal-600' : 
                     selectedGuide.category === 'PSYCHOLOGY' ? 'bg-pink-50 text-pink-600' : 
                     selectedGuide.category === 'DEVELOPMENT' ? 'bg-green-50 text-green-600' : 
-                    selectedGuide.category === 'POOP' ? 'bg-amber-50 text-amber-600' : 'bg-blue-50 text-blue-600'
+                    selectedGuide.category === 'POOP' ? 'bg-amber-50 text-amber-600' : 'bg-amber-50 text-amber-600'
                   }`}>
                     {selectedGuide.category === 'SLEEP' ? '💤 수면 가이드' : 
                      selectedGuide.category === 'NUTRITION' ? '🥣 영양 가이드' : 
@@ -495,7 +495,7 @@ export default function App() {
                 {selectedGuide.fullGuide ? (
                   <>
                     {/* 인트로 */}
-                    <p className="text-[13px] text-gray-600 leading-relaxed mb-5 bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-xl border border-blue-100">
+                    <p className="text-[13px] text-gray-600 leading-relaxed mb-5 bg-gradient-to-r from-amber-50 to-orange-50 p-4 rounded-xl border border-amber-100">
                       {selectedGuide.fullGuide.intro}
                     </p>
                     
@@ -541,7 +541,7 @@ export default function App() {
                         setActiveTab('CHATS');
                         setTimeout(() => handleSendMessage(question), 150);
                       }}
-                      className="w-full py-3.5 bg-gradient-to-r from-[#7EA1FF] to-[#A29BFE] text-white font-bold text-[13px] rounded-xl shadow-lg shadow-blue-200/50 active:scale-[0.98] transition-transform flex items-center justify-center gap-2"
+                      className="w-full py-3.5 bg-gradient-to-r from-[#F5B041] to-[#E67E22] text-white font-bold text-[13px] rounded-xl shadow-lg shadow-amber-200/50 active:scale-[0.98] transition-transform flex items-center justify-center gap-2"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
@@ -568,7 +568,7 @@ export default function App() {
                         setSelectedGuide(null);
                         setActiveTab('CHATS');
                       }}
-                      className="w-full py-3.5 bg-gradient-to-r from-[#7EA1FF] to-[#A29BFE] text-white font-bold text-[13px] rounded-xl shadow-lg shadow-blue-200/50 active:scale-[0.98] transition-transform"
+                      className="w-full py-3.5 bg-gradient-to-r from-[#F5B041] to-[#E67E22] text-white font-bold text-[13px] rounded-xl shadow-lg shadow-amber-200/50 active:scale-[0.98] transition-transform"
                     >
                       AI 코치에게 더 물어보기 →
                     </button>
@@ -644,7 +644,7 @@ export default function App() {
                         <span className="text-[10px] font-bold text-gray-500">{coach.name} 코치</span>
                       </div>
                     )}
-                    <div className={`px-3.5 py-2.5 rounded-2xl max-w-[85%] text-[14px] leading-relaxed ${msg.role === 'user' ? 'bg-[#7EA1FF] text-white rounded-tr-sm' : 'bg-white text-[#3D3D3D] border border-gray-100 rounded-tl-sm'}`}>
+                    <div className={`px-3.5 py-2.5 rounded-2xl max-w-[85%] text-[14px] leading-relaxed ${msg.role === 'user' ? 'bg-[#F5B041] text-white rounded-tr-sm' : 'bg-white text-[#3D3D3D] border border-gray-100 rounded-tl-sm'}`}>
                       {msg.content}
                     </div>
                     {msg.tips && (
@@ -686,7 +686,7 @@ export default function App() {
                                       <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded shrink-0 ${
                                         tip.type === 'SUCCESS' ? 'bg-green-50 text-green-600' : 
                                         tip.type === 'WARNING' ? 'bg-amber-50 text-amber-600' : 
-                                        'bg-blue-50 text-blue-600'
+                                        'bg-amber-50 text-amber-600'
                                       }`}>
                                         {tip.type === 'SUCCESS' ? '추천' : tip.type === 'WARNING' ? '주의' : '참고'}
                                       </span>
@@ -746,7 +746,7 @@ export default function App() {
               {isTyping && (
                 <div className="flex flex-col items-start gap-2 mb-6">
                   <div className="bg-white/90 backdrop-blur-md px-6 py-4 rounded-[32px] border border-gray-100 flex items-center gap-5 shadow-lg rounded-tl-none">
-                    <div className="flex gap-1"><div className="w-2 h-2 bg-[#7EA1FF] rounded-full animate-bounce"></div><div className="w-2 h-2 bg-[#7EA1FF] rounded-full animate-bounce delay-75"></div><div className="w-2 h-2 bg-[#7EA1FF] rounded-full animate-bounce delay-150"></div></div>
+                    <div className="flex gap-1"><div className="w-2 h-2 bg-[#F5B041] rounded-full animate-bounce"></div><div className="w-2 h-2 bg-[#F5B041] rounded-full animate-bounce delay-75"></div><div className="w-2 h-2 bg-[#F5B041] rounded-full animate-bounce delay-150"></div></div>
                     <span className="text-[13px] font-bold text-gray-600">전문 코치가 답변을 준비 중입니다...</span>
                   </div>
                 </div>
@@ -764,7 +764,7 @@ export default function App() {
                       updateHash('coach-all');
                       setForcedCoachId(null);
                     }} 
-                    className={`px-3 py-1.5 rounded-full text-[11px] font-bold transition-all ${!forcedCoachId ? 'bg-[#7EA1FF] text-white' : 'bg-gray-100 text-gray-500'}`}
+                    className={`px-3 py-1.5 rounded-full text-[11px] font-bold transition-all ${!forcedCoachId ? 'bg-[#F5B041] text-white' : 'bg-gray-100 text-gray-500'}`}
                   >
                     전체
                   </button>
@@ -798,7 +798,7 @@ export default function App() {
                   <button 
                     onClick={() => handleSendMessage()} 
                     disabled={!inputText.trim() || isTyping} 
-                    className={`p-2.5 rounded-full transition-all shrink-0 ${inputText.trim() ? 'bg-[#7EA1FF] text-white active:scale-90' : 'bg-gray-300 text-white'}`}
+                    className={`p-2.5 rounded-full transition-all shrink-0 ${inputText.trim() ? 'bg-[#F5B041] text-white active:scale-90' : 'bg-gray-300 text-white'}`}
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 12h14m-7-7l7 7-7 7"/></svg>
                   </button>
@@ -807,14 +807,14 @@ export default function App() {
             </div>
           </div>
         ) : (
-          <div className="flex-1 flex flex-col overflow-hidden bg-[#F8F9FD] tab-content-enter">
+          <div className="flex-1 flex flex-col overflow-hidden bg-[#FFFDF7] tab-content-enter">
             <header className="bg-white px-4 pt-[env(safe-area-inset-top,12px)] pb-4 rounded-b-[32px] shadow-sm z-20">
               <div className="flex items-center justify-between pt-2 mb-4">
                 <div>
-                   <span className="text-[10px] font-bold text-blue-500 uppercase tracking-wider">Report</span>
+                   <span className="text-[10px] font-bold text-amber-500 uppercase tracking-wider">Report</span>
                    <h1 className="text-[20px] font-black text-[#222]">상담 리포트</h1>
                 </div>
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#7EA1FF] to-[#A29BFE] flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F5B041] to-[#E67E22] flex items-center justify-center">
                   <span className="text-lg">📊</span>
                 </div>
               </div>
@@ -831,7 +831,7 @@ export default function App() {
                       updateHash('recent-chat-card');
                       setActiveTab('CHATS');
                     }}
-                    className="bg-gradient-to-br from-[#7EA1FF] via-[#8E9CFF] to-[#A29BFE] p-4 rounded-2xl text-white shadow-lg relative overflow-hidden cursor-pointer active:scale-[0.98] transition-transform"
+                    className="bg-gradient-to-br from-[#F5B041] via-[#F7DC6F] to-[#E67E22] p-4 rounded-2xl text-white shadow-lg relative overflow-hidden cursor-pointer active:scale-[0.98] transition-transform"
                   >
                     <div className="absolute -right-2 -bottom-2 text-[60px] opacity-10">💬</div>
                     <div className="relative z-10">
@@ -909,7 +909,7 @@ export default function App() {
                       <div className="bg-white p-5 rounded-[28px] shadow-sm border border-gray-50">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#7EA1FF] to-[#A29BFE] flex items-center justify-center text-2xl text-white">
+                            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#F5B041] to-[#E67E22] flex items-center justify-center text-2xl text-white">
                               💬
                             </div>
                             <div>
@@ -919,7 +919,7 @@ export default function App() {
                           </div>
                           <div className="text-right">
                             <p className="text-[10px] font-bold text-gray-400">받은 답변</p>
-                            <p className="text-[18px] font-black text-[#7EA1FF]">{assistantMessages.length}개</p>
+                            <p className="text-[18px] font-black text-[#F5B041]">{assistantMessages.length}개</p>
                           </div>
                         </div>
                       </div>
@@ -989,7 +989,7 @@ export default function App() {
                               return uniqueKeywords.map((kw, i) => (
                                 <span 
                                   key={i}
-                                  className="px-3 py-1.5 bg-gradient-to-r from-blue-50 to-purple-50 text-[11px] font-bold text-[#7EA1FF] rounded-xl border border-blue-100"
+                                  className="px-3 py-1.5 bg-gradient-to-r from-amber-50 to-orange-50 text-[11px] font-bold text-[#F5B041] rounded-xl border border-amber-100"
                                 >
                                   #{kw}
                                 </span>
@@ -1024,7 +1024,7 @@ export default function App() {
                             updateHash('go-to-chat');
                             setActiveTab('CHATS');
                           }}
-                          className="mt-4 px-5 py-2.5 bg-gradient-to-r from-[#7EA1FF] to-[#A29BFE] text-white text-[12px] font-bold rounded-2xl shadow-lg"
+                          className="mt-4 px-5 py-2.5 bg-gradient-to-r from-[#F5B041] to-[#E67E22] text-white text-[12px] font-bold rounded-2xl shadow-lg"
                         >
                           질문하러 가기 →
                         </button>
@@ -1051,7 +1051,7 @@ export default function App() {
                                 emoji: tip.icon,
                                 gradient: coach?.bgColor?.includes('gradient') 
                                   ? coach.bgColor.replace('linear-gradient(135deg, ', 'from-').replace(',', ' to-').replace(')', '') 
-                                  : 'from-blue-400 to-purple-500',
+                                  : 'from-amber-400 to-orange-500',
                                 category: category,
                                 tips: [
                                   `📖 ${tip.description}`,
@@ -1065,7 +1065,7 @@ export default function App() {
                             <div className="flex items-start gap-4">
                               <div 
                                 className="w-11 h-11 rounded-2xl flex items-center justify-center text-xl shrink-0"
-                                style={{ background: coach?.bgColor || 'linear-gradient(135deg, #7EA1FF, #A29BFE)' }}
+                                style={{ background: coach?.bgColor || 'linear-gradient(135deg, #F5B041, #E67E22)' }}
                               >
                                 {tip.icon}
                               </div>
@@ -1075,7 +1075,7 @@ export default function App() {
                                   <span className={`text-[9px] font-bold px-2 py-0.5 rounded-md ${
                                     tip.type === 'SUCCESS' ? 'bg-green-50 text-green-600' : 
                                     tip.type === 'WARNING' ? 'bg-amber-50 text-amber-600' : 
-                                    'bg-blue-50 text-blue-600'
+                                    'bg-amber-50 text-amber-600'
                                   }`}>
                                     {tip.type === 'SUCCESS' ? '추천' : tip.type === 'WARNING' ? '주의' : '참고'}
                                   </span>
@@ -1104,7 +1104,7 @@ export default function App() {
                 <div className="bg-white rounded-[32px] overflow-hidden shadow-sm border border-gray-50">
                   {dynamicChecklist.map((item) => (
                     <div key={item.id} onClick={() => toggleChecklist(item.id)} className={`flex items-center gap-4 p-5 cursor-pointer border-b border-gray-50 last:border-none transition-all ${item.completed ? 'bg-gray-50/40' : 'hover:bg-gray-50/50'}`}>
-                      <div className={`w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all shrink-0 ${item.completed ? 'bg-[#7EA1FF] border-transparent' : 'border-gray-200'}`}>
+                      <div className={`w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all shrink-0 ${item.completed ? 'bg-[#F5B041] border-transparent' : 'border-gray-200'}`}>
                         {item.completed && <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M5 13l4 4L19 7"/></svg>}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -1133,7 +1133,7 @@ export default function App() {
               setActiveTab('CHATS');
             }} 
             className={`flex flex-col items-center gap-0.5 px-6 py-1.5 rounded-xl transition-colors ${
-              activeTab === 'CHATS' ? 'text-[#7EA1FF]' : 'text-gray-400'
+              activeTab === 'CHATS' ? 'text-[#F5B041]' : 'text-gray-400'
             }`}
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1148,7 +1148,7 @@ export default function App() {
               setActiveTab('INSIGHTS');
             }} 
             className={`flex flex-col items-center gap-0.5 px-6 py-1.5 rounded-xl transition-colors ${
-              activeTab === 'INSIGHTS' ? 'text-[#7EA1FF]' : 'text-gray-400'
+              activeTab === 'INSIGHTS' ? 'text-[#F5B041]' : 'text-gray-400'
             }`}
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

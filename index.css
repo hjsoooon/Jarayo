@@ -3,12 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --primary: #7EA1FF;
-  --primary-gradient: linear-gradient(90deg, #7EA1FF, #A29BFE);
-  --bg-warm: #FDFBFA;
-  --text-main: #3D3D3D;
+  --primary: #F5B041;
+  --primary-dark: #E67E22;
+  --primary-gradient: linear-gradient(135deg, #F7DC6F 0%, #F5B041 50%, #E67E22 100%);
+  --bg-warm: #FFFDF7;
+  --bg-cream: #FFF9E6;
+  --text-main: #4A4A4A;
   --text-sub: #8E8E8E;
-  --ai-glow: rgba(126, 161, 255, 0.4);
+  --ai-glow: rgba(245, 176, 65, 0.4);
 }
 
 body { 
@@ -50,10 +52,7 @@ html {
   font-family: 'Outfit', sans-serif;
   font-size: 24px;
   font-weight: 800;
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #E67E22;
   letter-spacing: -0.01em;
 }
 
@@ -105,10 +104,10 @@ html {
 }
 
 .chat-container {
-  background-color: #FDFBFA;
+  background-color: #FFFDF7;
   background-image: 
-    radial-gradient(at 100% 0%, rgba(126, 161, 255, 0.08) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, rgba(162, 155, 254, 0.05) 0px, transparent 50%);
+    radial-gradient(at 100% 0%, rgba(247, 220, 111, 0.15) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(245, 176, 65, 0.08) 0px, transparent 50%);
   position: relative;
 }
 
